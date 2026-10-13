@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?php
 require_once 'BookItem.php';
 require_once 'Reader.php';
@@ -57,3 +58,10 @@ class LibraryManager {
         return false;
     }
 }
+=======
+    public function removeBookSafe($id) {
+        if (isset($this->catalog[$id]) && $this->catalog[$id]->status === 'available') {
+            unset($this->catalog[$id]);
+        }
+    }
+>>>>>>> hotfix/validation
