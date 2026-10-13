@@ -1,2 +1,2 @@
 ﻿<?php
-function verifyAge($userAge) { return $userAge >= 18; }
+function verifyAge($userAge) { return ((int)$userAge) >= 18; }
