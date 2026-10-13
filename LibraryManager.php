@@ -1,8 +1,10 @@
 ﻿<?php
 require_once 'BookItem.php';
+require_once 'Reader.php';
 
 class LibraryManager {
     public $catalog = [];
+    public $readers = [];
 
     public function addNewBook(BookItem $book) {
         $this->catalog[$book->id] = $book;
@@ -26,5 +28,9 @@ class LibraryManager {
             }
         }
         return $results;
+    }
+
+    public function registerReader(Reader $reader) {
+        $this->readers[$reader->readerId] = $reader;
     }
 }
