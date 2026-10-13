@@ -6,3 +6,4 @@ function verifyAge($userAge) {
 }
 // step 5
 // step 6
+// step 7
