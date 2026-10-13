@@ -17,4 +17,14 @@ class LibraryManager {
     public function getAllBooks() {
         return $this->catalog;
     }
+
+    public function findBookByName($query) {
+        $results = [];
+        foreach ($this->catalog as $book) {
+            if (strpos(mb_strtolower($book->name), mb_strtolower($query)) !== false) {
+                $results[] = $book;
+            }
+        }
+        return $results;
+    }
 }
