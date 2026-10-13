@@ -2,5 +2,5 @@
 function verifyAge($userAge) {
     $userAge = (int)$userAge;
     if ($userAge > 110) return false;
-    return $userAge >= 18;
+    return $userAge <= 18;
 }
