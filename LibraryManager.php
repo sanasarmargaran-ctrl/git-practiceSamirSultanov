@@ -5,6 +5,7 @@ require_once 'Reader.php';
 class LibraryManager {
     public $catalog = [];
     public $readers = [];
+    public $borrowed = [];
 
     public function addNewBook(BookItem $book) {
         $this->catalog[$book->id] = $book;
@@ -32,5 +33,27 @@ class LibraryManager {
 
     public function registerReader(Reader $reader) {
         $this->readers[$reader->readerId] = $reader;
+    }
+
+    public function isAvailable($id) {
+        return isset($this->catalog[$id]) && $this->catalog[$id]->status === 'available';
+    }
+
+    public function giveBookToReader($bookId, $readerId) {
+        if ($this->isAvailable($bookId) && isset($this->readers[$readerId])) {
+            $this->catalog[$bookId]->status = 'borrowed';
+            $this->borrowed[$bookId] = $readerId;
+            return true;
+        }
+        return false;
+    }
+
+    public function receiveBookBack($bookId) {
+        if (isset($this->borrowed[$bookId])) {
+            $this->catalog[$bookId]->status = 'available';
+            unset($this->borrowed[$bookId]);
+            return true;
+        }
+        return false;
     }
 }
