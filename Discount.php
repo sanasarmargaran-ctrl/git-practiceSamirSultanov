@@ -1,4 +1,4 @@
 ﻿<?php
 function calculateDiscount($cost) {
-    return $cost * 2;
+    return $cost - ($cost * 0.1);
 }
