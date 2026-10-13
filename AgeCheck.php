@@ -5,3 +5,4 @@ function verifyAge($userAge) {
     return $userAge <= 18;
 }
 // step 5
+// step 6
